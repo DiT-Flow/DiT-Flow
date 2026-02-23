@@ -1,0 +1,19 @@
+version: 1.0
+
+system: "base_solospeech_tse_cfm_urgent2026_MoLExLoRA_topK_3_r_8_alpha_16_lr_e-4_loss_switch_coef_e-2_loss_orth_coef_1.0_attn_30h"
+
+ddim:
+  v_prediction: true
+  diffusers:
+    num_train_timesteps: 1000
+    shift: 1.0
+
+diffwrap:
+  UDiT:
+    in_chans: 256
+    out_chans: 128
+    embed_dim: 768
+    depth: 12
+    num_heads: 12
+    mlp_ratio: 4.0
+    use_checkpoint: false

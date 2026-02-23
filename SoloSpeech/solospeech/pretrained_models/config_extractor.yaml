@@ -1,0 +1,34 @@
+version: 1.0
+
+system: "large"
+
+ddim:
+  v_prediction: true
+  diffusers:
+    num_train_timesteps: 1000
+    beta_schedule: 'scaled_linear'
+    beta_start: 0.00085
+    beta_end: 0.012
+    prediction_type: 'v_prediction'
+    rescale_betas_zero_snr: true
+    timestep_spacing: 'trailing'
+    clip_sample: false
+
+diffwrap:
+  ViT:
+    in_chans: 384
+    embed_dim: 512
+    depth: 16
+    num_heads: 8
+    mlp_ratio: 4.0
+    use_checkpoint: false
+  UDiT:
+    in_chans: 256
+    out_chans: 128
+    embed_dim: 1024
+    depth: 16
+    num_heads: 16
+    mlp_ratio: 4.0
+    use_checkpoint: false
+    context_dim: 384
+    context_fusion: 'cross'
