@@ -16,3 +16,33 @@ pip install -r requirements.txt
 pip install .
 ```
 
+## training
+
+The following lines are examples for training. 
+
+```bash
+cd ditflow/solospeech/scripts/solospeech
+export PYTHONPATH=$PWD:$PYTHONPATH
+accelerate launch scripts/solospeech/train-tse-cfm.py --train-clean <your_clean_files_dir> --train-reverb <your_distorted_files_dir>
+```
+
+
+You can select file based on finetuning method you want, LoRA or Mix of LoRA Experts.
+
+```bash
+accelerate launch scripts/solospeech/train-tse-cfm_urgent2026_MoLExLoRA_lb_orth_attn.py 
+```
+
+Use the following to control the hyperparameters for finetuning:
+--use-molex --molex-lb-type switch --molex-lb-coef 1e-2 --molex-orth-coef 1.0
+
+
+## inference
+
+The following lines are examples for inference. 
+
+```bash
+cd ditflow/solospeech/scripts/solospeech
+export PYTHONPATH=$PWD:$PYTHONPATH
+accelerate launch scripts/solospeech/batch_test_cfm.py --input_dir <your_input_files_dir> --save-dir <your_saved_files_dir>
+```
